@@ -11,3 +11,11 @@ describe ipnat do
   it { should have_rule 'map net1 192.168.0.0/24 -> 0.0.0.0/32' }
 end
 ```
+
+```ruby
+describe ipnat do
+  it "has the necessary rule" do
+    expect(subject).to have_rule('map net1 192.168.0.0/24 -> 0.0.0.0/32')
+  end
+end
+```

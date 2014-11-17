@@ -12,10 +12,26 @@ describe iptables do
 end
 ```
 
+```ruby
+describe iptables do
+  it "has the correct rule" do
+    expect(subject).to have_rule('-P INPUT ACCEPT')
+  end
+end
+```
+
 You can give a table name and a chain name like this.
 
 ```ruby
 describe iptables do
   it { should have_rule('-P INPUT ACCEPT').with_table('mangle').with_chain('INPUT') }
+end
+```
+
+```ruby
+describe iptables do
+  it "has the correct rule" do
+    expect(subject).to have_rule('-P INPUT ACCEPT').with_table('mangle').with_chain('INPUT')
+  end
 end
 ```

@@ -10,3 +10,15 @@ describe lxc('ct01') do
   it { should be_running }
 end
 ```
+
+```ruby
+describe lxc('ct01') do
+  it "exists" do
+    expect(subject).to exist
+  end
+
+  it "is running" do
+    expect(subject).to be_running
+  end
+end
+```

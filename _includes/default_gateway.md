@@ -10,3 +10,15 @@ describe default_gateway do
   its(:interface) { should eq 'br0'          }
 end
 ```
+
+```ruby
+describe default_gateway do
+  it "has the correct ip address" do
+    expect(subject.ipaddress).to eq '192.168.10.1'
+  end
+
+  it "has the correct interface" do
+    expect(subject.interface).to eq 'br0'
+  end
+end
+```

@@ -19,3 +19,23 @@ describe command('ls /foo') do
   its(:exit_status) { should eq 0 }
 end
 ```
+
+```ruby
+describe command('ls -al /') do
+  it "contains a bin in path" do
+    expect(subject.stdout).to match(/bin/)
+  end
+end
+
+describe command('ls /foo') do
+  it "does not contain the path" do
+    expect(subject.stderr).to match(/No such file or directory/)
+  end
+end
+
+describe command('ls /foo') do
+  it "executes without error" do
+    expect(subject.exit_status).to eq 0
+  end
+end
+```

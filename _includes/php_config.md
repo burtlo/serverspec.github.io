@@ -19,3 +19,25 @@ describe 'PHP config parameters' do
   end
 end
 ```
+
+```ruby
+describe 'PHP config parameters' do
+  context  php_config('default_mimetype') do
+    it "correct value" do
+      expect(subject).to eq 'text/html'
+    end
+  end
+
+  context php_config('session.cache_expire') do
+    it "correct value" do
+      expect(subject).to eq 180
+    end
+  end
+
+  context php_config('mbstring.http_output_conv_mimetypes') do
+    it "correct value" do
+      expect(subject).to match /application/
+    end
+  end
+end
+```

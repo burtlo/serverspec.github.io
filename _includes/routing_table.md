@@ -17,3 +17,15 @@ describe routing_table do
   end
 end
 ```
+
+```ruby
+describe routing_table do
+  it "has the necessary entry" do
+    expect(subject).to have_entry(
+      :destination => '192.168.100.0/24',
+      :interface   => 'eth1',
+      :gateway     => '192.168.10.1',
+    )
+  end
+end
+```

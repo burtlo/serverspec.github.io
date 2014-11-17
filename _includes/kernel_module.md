@@ -12,3 +12,11 @@ describe kernel_module('virtio_balloon') do
 end
 ```
 
+```ruby
+describe kernel_module('virtio_balloon') do
+  it "is loaded" do
+    expect(subject).to be_loaded
+  end
+end
+```
+

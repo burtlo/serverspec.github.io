@@ -11,3 +11,11 @@ describe ipfilter do
   it { should have_rule 'pass in quick on lo0 all' }
 end
 ```
+
+```ruby
+describe ipfilter do
+  it "has a rule" do
+    expect(subject).to have_rule('pass in quick on lo0 all')
+  end
+end
+```

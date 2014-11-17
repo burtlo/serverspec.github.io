@@ -12,6 +12,14 @@ describe group('wheel') do
 end
 ```
 
+```ruby
+describe group('wheel') do
+  it "exists" do
+    expect(subject).to exist
+  end
+end
+```
+
 #### have\_gid
 
 In order to test a group have a given gid, you should use **have\_gid** matcher.
@@ -22,3 +30,10 @@ describe group('root') do
 end
 ```
 
+```ruby
+describe group('root') do
+  it "has the correct gid" do
+    expect(subject).to have_gid(0)
+  end
+end
+```

@@ -22,3 +22,26 @@ describe selinux do
   it { should be_permissive }
 end
 ```
+
+```ruby
+# SELinux should be disabled
+describe selinux do
+  it "disabled" do
+    expect(subject).to be_disabled
+  end
+end
+
+# SELinux should be enforcing
+describe selinux do
+  it "enforcing" do
+    expect(subject).to be_enforcing
+  end
+end
+
+# SELinux should be permissive
+describe selinux do
+  it "permissive" do
+    expect(subject).to be_permissive
+  end
+end
+```

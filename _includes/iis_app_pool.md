@@ -12,6 +12,14 @@ describe iis_app_pool('Default App Pool') do
 end
 ```
 
+```ruby
+describe iis_app_pool('Default App Pool') do
+  it "exists" do
+    expect(subject).to exist
+  end
+end
+```
+
 #### have\_dotnet\_version
 
 In order to test that an IIS app pool is using the correct .NET version, you should use **have_dotnet_version** matcher.
@@ -19,5 +27,13 @@ In order to test that an IIS app pool is using the correct .NET version, you sho
 ```ruby
 describe iis_app_pool('Default App Pool') do
   it{ should have_dotnet_version('2.0') }
+end
+```
+
+```ruby
+describe iis_app_pool('Default App Pool') do
+  it "has the correct dotnet version" do
+    expect(subject).to have_dotnet_version('2.0')
+  end
 end
 ```

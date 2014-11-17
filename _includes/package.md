@@ -12,10 +12,26 @@ describe package('httpd') do
 end
 ```
 
+```ruby
+describe package('httpd') do
+  it "is installed" do
+    expect(subject).to be_installed
+  end
+end
+```
+
 You can also test a given version of gem is installed.
 
 ```ruby
 describe package('jekyll') do
   it { should be_installed.by('gem').with_version('0.12.1') }
+end
+```
+
+```ruby
+describe package('jekyll') do
+  it "installed with the correct version" do
+    expect(subject).to be_installed.by('gem').with_version('0.12.1')
+  end
 end
 ```

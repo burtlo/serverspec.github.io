@@ -14,6 +14,14 @@ describe ppa('launchpad-username/ppa-name') do
 end
 ```
 
+```ruby
+describe ppa('launchpad-username/ppa-name') do
+  it "exists" do
+    expect(subject).to exist
+  end
+end
+```
+
 #### be_enabled
 
 In order to test a given ppa repository is enabled,  you should use **be_enabled** matcher.
@@ -21,5 +29,13 @@ In order to test a given ppa repository is enabled,  you should use **be_enabled
 ```ruby
 describe ppa('launchpad-username/ppa-name') do
   it { should be_enabled }
+end
+```
+
+```ruby
+describe ppa('launchpad-username/ppa-name') do
+  it "enabled" do
+    expect(subject).to be_enabled
+  end
 end
 ```

@@ -94,6 +94,58 @@ describe port(80) do
 end
 ```
 
+```ruby
+require 'spec_helper'
+
+describe package('httpd'), :if => os[:family] == 'redhat' do
+  it "installed" do
+    expect(subject).to be_installed
+  end
+end
+
+describe package('apache2'), :if => os[:family] == 'ubuntu' do
+  it "installed" do
+    expect(subject).to be_installed
+  end
+end
+
+describe service('httpd'), :if => os[:family] == 'redhat' do
+  it "enabled" do
+    expect(subject).to be_enabled
+  end
+
+  it "running" do
+    expect(subject).to be_running
+  end
+end
+
+describe service('apache2'), :if => os[:family] == 'ubuntu' do
+  it "enabled" do
+    expect(subject).to be_enabled
+  end
+
+  it "running" do
+    expect(subject).to be_running
+  end
+end
+
+describe service('org.apache.httpd'), :if => os[:family] == 'darwin' do
+  it "enabled" do
+    expect(subject).to be_enabled
+  end
+
+  it "running" do
+    expect(subject).to be_running
+  end
+end
+
+describe port(80) do
+  it "listening" do
+    expect(subject).to be_listening
+  end
+end
+```
+
 You can write spec for testing servers like this.
 
 Serverspec with SSH backend logs in to target servers as a user configured in ``~/.ssh/config`` or a current user. If you'd like to change the user, please edit the below line in ``spec/spec_helper.rb``.

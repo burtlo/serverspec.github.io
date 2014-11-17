@@ -10,6 +10,14 @@ describe process("memcached") do
 end
 ```
 
+```ruby
+describe process("memcached") do
+  it "has the correct args" do
+    expect(subject).to match(match /-c 32000\b/)
+  end
+end
+```
+
 For the complete list of available parameters, check the manual page
 for `ps(1)`, section _Standard Format Specifiers_. When several
 processes match, only the parameters of the first one are be
@@ -22,5 +30,13 @@ To check if a given process is running, you should use **be_running** matcher.
 ```ruby
 describe process("memcached") do
   it { should be_running }
+end
+```
+
+```ruby
+describe process("memcached") do
+  it "running" do
+    expect(subject).to be_running
+  end
 end
 ```

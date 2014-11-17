@@ -6,7 +6,7 @@ You can test Linux kernel parameters like this.
 
 ```ruby
 describe 'Linux kernel parameters' do
-  context linux_kernel_parameter('net.ipv4.tcp_syncookies') do 
+  context linux_kernel_parameter('net.ipv4.tcp_syncookies') do
     its(:value) { should eq 1 }
   end
 
@@ -24,6 +24,40 @@ describe 'Linux kernel parameters' do
 
   context linux_kernel_parameter('net.ipv4.tcp_wmem') do
     its(:value) { should match /4096\t16384\t4194304/ }
+  end
+end
+```
+
+```ruby
+describe 'Linux kernel parameters' do
+  context linux_kernel_parameter('net.ipv4.tcp_syncookies') do
+    it "correct value" do
+      expect(subject.value).to eq(1)
+    end
+  end
+
+  context linux_kernel_parameter('kernel.shmall') do
+    it "correct value" do
+      expect(subject.value).to be >= 4294967296
+    end
+  end
+
+  context linux_kernel_parameter('kernel.shmmax') do
+    it "correct value" do
+      expect(subject).to be <= 68719476736
+    end
+  end
+
+  context linux_kernel_parameter('kernel.osrelease') do
+    it "correct value" do
+      expect(subject).to eq '2.6.32-131.0.15.el6.x86_64'
+    end
+  end
+
+  context linux_kernel_parameter('net.ipv4.tcp_wmem') do
+    it "correct value" do
+      expect(subject).to match /4096\t16384\t4194304/
+    end
   end
 end
 ```
